@@ -13,11 +13,11 @@ use traits\model\SoftDelete;
  * @property mixed name
  */
 
-class AdminArticles extends Admin
+class AdminLink extends Admin
 {
 //    use SoftDelete;
 
-    protected $name = 'articles';
+    protected $name = 'links';
     protected $autoWriteTimestamp = true;
 
     

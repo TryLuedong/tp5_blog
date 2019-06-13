@@ -6,10 +6,11 @@
 
 namespace app\admin\validate;
 
-class AdminArticleCategory extends Admin
+class AdminLink extends Admin
 {
     protected $rule = [
-        'name|标题'      => 'require',
+        'name|链接名'      => 'require',
+        'url|链接'      => 'url',
     ];
 
     protected $message = [
@@ -18,7 +19,7 @@ class AdminArticleCategory extends Admin
     ];
 
     protected $scene = [
-        'add'   => ['name'],
-        'edit'  => ['name'],
+        'add'   => ['name','url'],
+        'edit'  => ['name','url'],
     ];
 }

@@ -4,10 +4,11 @@ namespace app\admin\controller;
 
 use app\admin\model\Admin;
 use app\admin\model\AdminArticleCategory;
+use app\admin\model\AdminLink;
 use think\Db;
 use think\Request;
 
-class AdminLink extends Base
+class Link extends Base
 {
     /**
      * 显示资源列表
@@ -35,7 +36,7 @@ class AdminLink extends Base
             'page'  => $list->render(),
             'total' => $list->total()
         ]);
-        return $this->fetch('link/index');
+        return $this->fetch();
     }
 
     /**
@@ -46,10 +47,16 @@ class AdminLink extends Base
     public function add()
     {
         if ($this->request->isPost()) {
+            $result = $this->validate($this->param, 'AdminLink.add');
+            if (true !== $result) {
+                return $this->error($result);
+            }
             try{
-                $model = new AdminArticleCategory();
+                $model = new AdminLink();
                 $post                = input('post.');
-                $data['category_name'] = $post['name'];
+                $data['name'] = $post['name'];
+                $data['url'] = $post['url'];
+                $data['add_time'] = time();
                 $model->addData($data);
             }catch (\Exception $error){
                 $this->exception($error);
@@ -90,14 +97,15 @@ class AdminLink extends Base
      */
     public function edit()
     {
-        $info = AdminArticleCategory::get($this->id);
+        $info = AdminLink::get($this->id);
         if ($this->request->isPost()) {
-            $result_validate = $this->validate($this->param, 'AdminArticleCategory.edit');
+            $result_validate = $this->validate($this->param, 'AdminLink.edit');
             if (true !== $result_validate) {
                 return $this->error($result_validate);
             }
-            $model =  new AdminArticleCategory();
-            $data['category_name'] = $this->param['name'];
+            $model =  new AdminLink();
+            $data['name'] = $this->param['name'];
+            $data['url'] = $this->param['url'];
             $where['id'] = $this->id;
             $result = $model->save($data,$where);
             if ($result) {

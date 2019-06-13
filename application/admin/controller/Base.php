@@ -343,7 +343,11 @@ class Base extends Controller
     {
         return $this->error('页面不存在');
     }
-
+    //异常处理
+    public function exception($e) {
+        $message = $e->getMessage() ? $e->getMessage() : "网络异常请稍后再试！";
+        $this->error($message);
+    }
 
     //Excel导出方法
     function export($head, $body, $name = null, $version = '2007',$title='记录')

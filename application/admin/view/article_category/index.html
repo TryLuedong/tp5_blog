@@ -5,28 +5,9 @@
                 <form class="form-inline" name="searchForm" id="searchForm" action="" method="GET">
                     <div class="form-group">
                         <input value="{$keywords ? $keywords : '' ;}"
-                               name="keywords" id="keywords" class="form-control input-sm" placeholder="帐号/昵称/手机号/邮箱">
+                               name="keywords" id="keywords" class="form-control input-sm" placeholder="分类名">
                     </div>
 
-
-
-                    <div class="form-group">
-                        <select name="_order_" class="form-control input-sm">
-                            <option value="">排序字段</option>
-                            <option value="" {if isset($_order_) && $_order_=='id'}selected{/if}>ID</option>
-                            <option value="name" {if isset($_order_) && $_order_=='name'}selected{/if}>帐号</option>
-                            <option value="reg_time" {if isset($_order_) && $_order_=='reg_time'}selected{/if}>注册时间</option>
-                            <option value="last_login_time" {if isset($_order_) && $_order_=='last_login_time'}selected{/if}>最后登录时间</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <select name="_by_" class="form-control input-sm">
-                            <option value="">排序方式</option>
-                            <option value="desc" {if isset($_by_) && $_by_=='desc'}selected{/if}>倒序</option>
-                            <option value="asc"  {if isset($_by_) && $_by_=='asc'}selected{/if}>正序</option>
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-search"></i> 查询
@@ -62,10 +43,7 @@
                             <input id="data-checkall" type="checkbox" onclick="check_all(this)" class="checkbox" placeholder="全选/取消">
                         </th>
                         <th>ID</th>
-                        <th>文章标题</th>
-                        <th>文章分类</th>
-                        <th>文章内容</th>
-                        <th>添加时间</th>
+                        <th>名称</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -78,10 +56,7 @@
                                    placeholder="选择/取消">
                         </td>
                         <td>{$item.id}</td>
-                        <td>{$item.title}</td>
-                        <td>{$item.category_id}</td>
-                        <td>{$item.content}</td>
-                        <td>{$item.add_time}</td>
+                        <td>{$item.category_name}</td>
                         <td class="td-do">
                             <a href="edit.html?id={$item.id}"
                                class="btn btn-primary btn-xs" data-toggle="tooltip" title="修改">
@@ -98,4 +73,3 @@
             </div>
             {include file="template/data_footer" /}
         </div>
- 

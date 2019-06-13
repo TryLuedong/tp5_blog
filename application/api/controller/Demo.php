@@ -7,6 +7,7 @@
 namespace app\api\controller;
 
 use app\admin\model\AdminLogs;
+use think\Db;
 
 class Demo extends Api
 {
@@ -20,7 +21,7 @@ class Demo extends Api
         $num  = isset($this->param['num']) ? $this->param['num'] : 10;
         //限制每页数量，防止恶意请求数据量过大
         $num = $num>100?100:$num;
-        $list = AdminLogs::where('user_id', '<>', 1)
+        $list = AdminLogs::where('user_id', '=', 1)
             ->order('id', 'desc')
             ->page($page, $num)
             ->select();

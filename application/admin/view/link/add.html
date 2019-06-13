@@ -6,18 +6,31 @@
                 <div class="box-body">
                     <div class="fields-group">
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">分类名</label>
+                            <label for="name" class="col-sm-2 control-label">链接名</label>
                             <div class="col-sm-10 col-md-4">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-navicon"></i></span>
-                                    <input maxlength="20" id="name" name="name" value="{$info.category_name|default=''}"
-                                           class="form-control" placeholder="分类名">
+                                    <input maxlength="20" id="name" name="name" value="{$info.name|default=''}"
+                                           class="form-control" placeholder="链接名">
                                 </div>
                             </div>
                         </div>
 
-                </div>
-                {include file="template/form_footer" /}
+                    </div>
+                    <div class="fields-group">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">链接</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-navicon"></i></span>
+                                    <input maxlength="20" id="url" name="url" value="{$info.url|default=''}"
+                                           class="form-control" placeholder="链接">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {include file="template/form_footer" /}
             </form>
         </div>
     </div>
